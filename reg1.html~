@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+body {font-family: "Lato", sans-serif;
+
+text-align: justify; /* For Edge */
+  -moz-text-align-last: center; /* For Firefox prior 58.0 */
+  }
+
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+.navbar a {
+  float:right;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  padding: 24px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: right;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 20px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 24px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/*blur bg */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+body{
+.bg-image {
+background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
+  /* The image used */
+  
+  /* Add the blur effect */
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  
+  /* Full height */
+  height: 100%; 
+  
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}}
+
+/* Position text in the middle of the page/image */
+.bg-text {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 45%;
+  padding: 20px;
+  text-align: center;
+ font-size:20px;
+}
+
+
+/*   inner box of login    */
+
+input[type=text], input[type=password] {
+  width: 60%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size:18px;
+}
+
+.container {
+font-size:20px;
+  padding: 16px;
+}
+
+.header {
+z-index: 2;  padding: 20px;
+  text-align: center;
+  font-size: 35px;
+}
+
+
+.id1{
+  position: absolute;
+  left:20px;
+  top: 95px;
+  align:center;
+  z-index: 2;
+
+}
+
+.foot{
+font-family:"Comic Sans MS", cursive, sans-serif;
+padding: 40px;
+background-color:black;
+font-size:20px;
+color:white;
+text-align:center;
+}
+
+
+/* Set a style for all buttons */
+button {
+	font-size:20px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .loginbtn {
+  float: left;
+  width: 50%;
+}
+
+/* Add padding to container elements */
+.container {
+  padding: 16px;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .loginbtn {
+     width: 100%;
+  }
+}
+.query{
+font-size:25px;}
+</style>
+<script>
+function validateEmail(sEmail) {
+  var reEmail = /^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!\.)){0,61}[a-zA-Z0-9]?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!$)){0,61}[a-zA-Z0-9]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/;
+
+  if(!sEmail.match(reEmail)) {
+    alert("Invalid email address");
+    return false;
+  }
+
+  return true;
+
+}
+ function validateform(){  
+var t1=document.myform.t1.value;  
+var t4=document.myform.t4.value;  
+  
+if (t1==null || t1>5){  
+  alert("Name can't be blank");  
+  return false;  
+}else if(t4.length<8){  
+  alert("Password must be at least 8 characters long.");  
+  return false;  
+  }  
+} 
+function validatecontact(){
+var number=document.myform.t3.value;
+if(number.value == "") {
+    window.alert("Error: Cell number must not be null.");
+    number.focus();
+    return false;
+}
+
+if(number.length != 10) {
+    window.alert("Phone number must be 10 digits.");
+    number.focus();
+    return false;
+} }
+
+
+
+
+</script></head>
+<body>
+<form name="myform" method="POST" action="http://192.168.100.252/ty10/project/reg1.php">
+<div class="navbar">
+  <li style="float:left"><a>@XL Classes</a></li>
+<!---- <a href="http://192.168.100.252/ty10/project/contactus.html">Contact us</a>
+  <a href="http://192.168.100.252/ty10/project/faculty.html">Feedback</a>
+  <a href="http://192.168.100.252/ty10/project/aboutus.html">About us</a>
+  <a href="http://192.168.100.252/ty10/project/facilities.html">Facilities</a>
+  <a href="http://192.168.100.252/ty10/project/feedback.html">Faculty</a>
+  <div class="dropdown">
+    <button class="dropbtn">Classes
+    </button>
+    <div class="dropdown-content">
+      <a href="http://192.168.100.252/ty10/project/class.html">8th grade</a>
+      <a href="http://192.168.100.252/ty10/project/class.html">9th grade</a>
+      <a href="http://192.168.100.252/ty10/project/class.html">10th grade</a>
+    </div>
+  </div>   
+ 
+  <a href="http://192.168.100.252/ty10/project/main1.html">Home</a>----->
+</div>
+
+<div class="header">
+  <h1>XL Classes</h1>
+ <img class="id1" src="http://192.168.100.252/ty10/project/logo.png"width="200" height="150">
+<hr color="teal">
+</div>
+
+<div class="bg-image" ><img src="http://192.168.100.252/ty10/project/reg.jpg" width="1400" height="900">
+<div class="bg-text">
+<h2>Register Now!!</h2>
+<hr>
+  <div class="container">
+    <label><b>Username:</b></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<input type="text" placeholder="Enter Username" name="t1"  onsubmit="return validateform()"required>
+<br>
+
+    <label><b>Email:</b></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" placeholder="Enter Email" name="t2" onblur="validateEmail(this.value);"required>
+	<br>
+	
+    <label><b>Contact no:</b></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" placeholder="Enter Phone no" name="t3" required>
+	<br>
+    <label><b>Password:</b></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="password" placeholder="Enter Password" name="t4" required>
+    <br>    
+	
+    <label>Confirm Password:</b></label>
+    <input type="password" placeholder="Enter Password" name="t5" required>
+	<br>
+	<br>
+    <label><b>Register as:</b></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   <input type=radio name="r" value="tutor">Tutor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   <input type=radio name="r" value="student">Student
+   
+	<hr>
+    <label>
+      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+    </label>
+    
+    <p>By creating an account you agree to our <a href="http://192.168.100.252/ty10/project/s_terms_and_conditions.html" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+    <div class="clearfix">
+      <button type="button" class="cancelbtn"><a href="http://192.168.100.252/ty10/projectslogin.html">Cancel</a></button>
+      <button type="submit" class="loginbtn">Register</button>
+    </div>
+	
+</div>
+</div>
+
+<footer class="foot">
+<div class="query">
+	contact us:9808576098<br>
+	email:xzb@gmail.com<br>
+	
+<p style="font-size:25px;">	XL Classes gives you the education you want and the attention you need.</p>
+<br> 
+</div><br><br>
+	<div style="float:right;">power by @xxyyzz</div>
+	</footer>
+	</form>
+</body>
+</html>

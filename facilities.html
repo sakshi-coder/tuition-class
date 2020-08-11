@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<title>home</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: "Lato", sans-serif;
+
+text-align: justify; /* For Edge */
+  -moz-text-align-last: center; /* For Firefox prior 58.0 */
+  
+}
+
+.photo{
+border: 1px solid #777;
+display:block;
+position: center;
+  margin: 15px;
+  border: 1px solid black;
+  padding:30px 30px;
+  float: left;
+  width: 250px;
+  background-color:CornflowerBlue ;
+
+}
+
+.header {
+background-color:PaleTurquoise;
+  padding: 50px;
+  text-align: center;
+  font-size: 35px;
+  font-family:"Comic Sans MS", cursive, sans-serif;
+}
+
+.id1{
+  position: absolute;
+  left:20px;
+  top: 95px;
+  align:center;
+  z-index: 2;
+
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+.navbar {
+top:0px;
+postion:still;
+  overflow: hidden;
+  background-color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+.navbar a {
+  float:right;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  padding: 24px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: right;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 20px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 24px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+div.gallery {
+background-color:Bisque;
+position: center;
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 250px;
+
+}
+
+div.gallery:hover {background-color:Bisque;
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+
+
+.p1{
+padding:px 6px;
+font-size:18px;
+text-align: justify; /* For Edge */
+  -moz-text-align-last: center; /* For Firefox prior 58.0 */
+  text-align-last: center;}
+
+
+  
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  background-color:LightCyan;
+    padding: 10px;
+}
+
+.grid-container > div {
+  background-color:white;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+.item1 {
+
+background-color:powderblue ;
+  font-size:20px;
+  grid-column: 1 / span 3;
+  text-align: left;
+}
+
+.foot{
+font-family:"Comic Sans MS", cursive, sans-serif;
+padding: 40px;
+background-color:black;
+font-size:20px;
+color:white;
+text-align:center;
+}
+
+.query{
+font-size:25px;}
+  </style>
+<body>
+
+<div class="navbar">
+  <li style="float:left"><a >@Excel CLasses</a></li>
+ <a href="http://localhost/contactus.html">Contact Us</a>
+  <a href="http://localhost/faculty.html">Feedback</a>
+  <a href="http://localhost/aboutus.html">About us</a>
+  <a href="http://localhost/facilities.html">Facilities</a>
+  <a href="http://localhost/feedback.html">Faculty</a>
+  <div class="dropdown">
+    <button class="dropbtn">Classes
+    </button>
+    <div class="dropdown-content">
+      <a href="http://localhost/classes.html">8th grade</a>
+      <a href="http://localhost/classes.html">9th grade</a>
+      <a href="http://localhost/classes.html"> 10th grade</a>
+    </div>
+  </div>   
+  
+  <a href="http://localhost/main1.html">Home</a>
+</div>
+
+</body>
+
+<div class="header">
+  <h1>Excel Classes</h1>
+ <img class="id1" src="http://localhost/logo.png" height="200px" width="200px">
+
+</div>
+<hr color="teal">
+
+<h2 style="text-align: center; font-size:35px;"><u><b>FACILITIES</u></h2>
+
+ <div class="item1">
+	We ensure each classroom has the right layout and furniture, the correct equipment and lighting for presentations. Also A.C. Classrooms, cascade auditorium seating, spacious parking, separate study hall to add ease.
+
+
+	</div>
+	
+	<div class="grid-container" style="background-image:url(101.jfif);">
+		<div class="gallery">
+			<img src="http://localhost/f1.jpg" width="600" height="800">A.C. Class Rooms<br>
+<div class="p1">Spacious AC class rooms, well equipped with modern systems provide students with best possible comfort.
+			</div>
+			</div>
+
+	<div class="gallery">
+		<img src="http://localhost/f2.jpg"  width="600" height="800">
+Cascade Auditorium Seating<div class="p1">
+All classrooms feature cascade auditorium seating arrangement for better attentiveness.			</div>
+</div>
+	<div class="gallery">
+		<img src="http://localhost/f3.jpg"  width="600" height="800">
+		Interactive Projectors<div class="p1">
+More efficient note-taking, interactive presentations keep children engaged and focused.
+</div>
+		</div>
+
+	<div class="gallery">
+		<img src="http://localhost/f4.jpg"  width="600" height="800">
+		Interactive Screen Tablets<div class="p1">
+To keep up to date with the changing needs of the education scenario teaching faculty use interactive screen tablets.</div>
+</div>
+	<div class="gallery">
+		<img src="http://localhost/f5.jpg"  width="600" height="800">
+		
+		Seperate Study Hall<div class="p1">
+Study halls are given to students encouraging them to partake into self assessment and to make most out of it
+		</div></div>
+	<div class="gallery">
+			<img src="http://localhost/f6.jpg"  width="600" height="800">
+Spacious Parking<div class="p1">
+Spacious Parking is an amenity nowadays and part of your daily commute. We provide dedicated yet spacious parking, so that the vehicles are safely parked.		</div>
+</div>
+	</div>
+	</div>
+   <footer class="foot">
+
+contact us:9876543210<br>
+	email:xzb@gmail.com<br>
+	
+<p style="font-size:25px;">	Excel Classes gives you the education you want and the attention you need.</p>
+</div><br><br>
+	<div style="float:right;">power by @xxyyzz</div>
+	</footer>	
+
+
+</body>
+</html>
+

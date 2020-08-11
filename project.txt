@@ -1,0 +1,348 @@
+tydb10=> create table registration(rid serial primary key,rname varchar(50),rcontactno decimal(10),reg_as varchar(50) check(reg_as='student' or reg_as='tutor'),confirm_password varchar(50));
+NOTICE:  CREATE TABLE will create implicit sequence "registration_rid_seq" for serial column "registration.rid"
+NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "registration_pkey" for table "registration"
+CREATE TABLE
+tydb10=> insert into registration values(1,'sakshi','9898989898','student','s');
+INSERT 0 1
+tydb10=> insert into registration values(2,'prachi','2229898981','tutor','p');
+INSERT 0 1
+tydb10=> insert into registration values(3,'honey','8886715848','tutor','h');
+INSERT 0 1
+tydb10=> insert into registration values(4,'kulu','8999999848','student','k');
+INSERT 0 1
+tydb10=> \d registration;
+                                      Table "public.registration"
+      Column      |         Type          |                         Modifiers                          
+------------------+-----------------------+------------------------------------------------------------
+ rid              | integer               | not null default nextval('registration_rid_seq'::regclass)
+ rname            | character varying(50) | 
+ rcontactno       | numeric(10,0)         | 
+ reg_as           | character varying(50) | 
+ confirm_password | character varying(50) | 
+Indexes:
+    "registration_pkey" PRIMARY KEY, btree (rid)
+Check constraints:
+    "registration_reg_as_check" CHECK (reg_as::text = 'student'::text OR reg_as::text = 'tutor'::text)
+
+tydb10=> select * from registration;
+ rid | rname  | rcontactno | reg_as  | confirm_password 
+-----+--------+------------+---------+------------------
+   1 | sakshi | 9898989898 | student | s
+   2 | prachi | 2229898981 | tutor   | p
+   3 | honey  | 8886715848 | tutor   | h
+   4 | kulu   | 8999999848 | student | k
+(4 rows)
+
+
+
+******************************************
+
+tydb10=> create table rlogin(email varchar(30) not null,password varchar(30)not null);
+CREATE TABLE
+tydb10=> \d rlogin;
+            Table "public.rlogin"
+  Column  |         Type          | Modifiers 
+----------+-----------------------+-----------
+ email    | character varying(30) | not null
+ password | character varying(30) | not null
+
+tydb10=> insert into rlogin values('sakshi@gmail.com','s');
+INSERT 0 1
+tydb10=> insert into rlogin values('prachi@gmail.com','p');
+INSERT 0 1
+tydb10=> insert into rlogin values('honey@gmail.com','h');
+INSERT 0 1
+tydb10=> insert into rlogin values('kulu@gmail.com','k');
+INSERT 0 1
+tydb10=> 
+ydb10=> select * from rlogin;
+      email       | password 
+------------------+----------
+ sakshi@gmail.com | s
+ prachi@gmail.com | p
+ honey@gmail.com  | h
+ kulu@gmail.com   | k
+(4 rows)
+*************************************************
+tydb10=>  create table schedule(shid serial primary key,shname varchar(50) check(shname='6am' or shname='3pm' or shname='6pm'));
+NOTICE:  CREATE TABLE will create implicit sequence "schedule_shid_seq" for serial column "schedule.shid"
+NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "schedule_pkey" for table "schedule"
+CREATE TABLE
+tydb10=> \d schedule;
+                                 Table "public.schedule"
+ Column |         Type          |                        Modifiers                        
+--------+-----------------------+---------------------------------------------------------
+ shid   | integer               | not null default nextval('schedule_shid_seq'::regclass)
+ shname | character varying(50) | 
+Indexes:
+    "schedule_pkey" PRIMARY KEY, btree (shid)
+Check constraints:
+    "schedule_shname_check" CHECK (shname::text = '6am'::text OR shname::text = '3pm'::text OR shname::text = '6pm'::text)
+
+tydb10=> insert into schedule(1,'6am');
+ERROR:  syntax error at or near "1"
+LINE 1: insert into schedule(1,'6am');
+                             ^
+tydb10=> insert into schedule('6am');
+ERROR:  syntax error at or near "'6am'"
+LINE 1: insert into schedule('6am');
+                             ^
+tydb10=> insert into schedule values(1,'6am');
+INSERT 0 1
+tydb10=> insert into schedule values(2,'3pm');
+INSERT 0 1
+tydb10=> insert into schedule values(3,'6pm');
+INSERT 0 1
+******************************************\
+tydb10=> create table studentt(sid serial primary key, sname varchar(100),class varchar(50) check(class='8thgrade' or class='9thgrade' or class='10thgrade'), contactno decimal(10),addr text,gender varchar(30) check(gender='female' or gender='male' or gender='other'),dob date,email varchar(30),scname varchar(50),board varchar(10) check(board='cbsc' or board='ssc'),wut time,shid int references schedule(shid));
+NOTICE:  CREATE TABLE will create implicit sequence "studentt_sid_seq" for serial column "studentt.sid"
+NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "studentt_pkey" for table "studentt"
+CREATE TABLE
+tydb10=> \d studentt;
+                                   Table "public.studentt"
+  Column   |          Type          |                       Modifiers                        
+-----------+------------------------+--------------------------------------------------------
+ sid       | integer                | not null default nextval('studentt_sid_seq'::regclass)
+ sname     | character varying(100) | 
+ class     | character varying(50)  | 
+ contactno | numeric(10,0)          | 
+ addr      | text                   | 
+ gender    | character varying(30)  | 
+ dob       | date                   | 
+ email     | character varying(30)  | 
+ scname    | character varying(50)  | 
+ board     | character varying(10)  | 
+ wut       | time without time zone | 
+ shid      | integer                | 
+Indexes:
+    "studentt_pkey" PRIMARY KEY, btree (sid)
+Check constraints:
+    "studentt_board_check" CHECK (board::text = 'cbsc'::text OR board::text = 'ssc'::text)
+    "studentt_class_check" CHECK ("class"::text = '8thgrade'::text OR "class"::text = '9thgrade'::text OR "class"::text = '10thgrade'::text)
+    "studentt_gender_check" CHECK (gender::text = 'female'::text OR gender::text = 'male'::text OR gender::text = 'other'::text)
+Foreign-key constraints:
+    "studentt_shid_fkey" FOREIGN KEY (shid) REFERENCES schedule(shid)
+
+
+
+**********************************************************************
+tydb10=>  create table tutor(tid serial primary key,tname varchar(100),class varchar(40) check(class='9thgrade' or class='8thgrade' or class='10thgrade'),gender varchar(50) check(gender='female' or gender='male' or gender='other'),contact_no decimal(10),addr text,dob date,email varchar(50),exp decimal(3),quali varchar(150),available_time time,board varchar(30) check(board='cbsc' or board='ssc'),shid int references schedule(shid));
+NOTICE:  CREATE TABLE will create implicit sequence "tutor_tid_seq" for serial column "tutor.tid"
+NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "tutor_pkey" for table "tutor"
+CREATE TABLE
+tydb10=> \d tutor;
+                                     Table "public.tutor"
+     Column     |          Type          |                      Modifiers                      
+----------------+------------------------+-----------------------------------------------------
+ tid            | integer                | not null default nextval('tutor_tid_seq'::regclass)
+ tname          | character varying(100) | 
+ class          | character varying(40)  | 
+ gender         | character varying(50)  | 
+ contact_no     | numeric(10,0)          | 
+ addr           | text                   | 
+ dob            | date                   | 
+ email          | character varying(50)  | 
+ exp            | numeric(3,0)           | 
+ quali          | character varying(150) | 
+ available_time | time without time zone | 
+ board          | character varying(30)  | 
+ shid           | integer                | 
+Indexes:
+    "tutor_pkey" PRIMARY KEY, btree (tid)
+Check constraints:
+    "tutor_board_check" CHECK (board::text = 'cbsc'::text OR board::text = 'ssc'::text)
+    "tutor_class_check" CHECK ("class"::text = '9thgrade'::text OR "class"::text = '8thgrade'::text OR "class"::text = '10thgrade'::text)
+    "tutor_gender_check" CHECK (gender::text = 'female'::text OR gender::text = 'male'::text OR gender::text = 'other'::text)
+Foreign-key constraints:
+    "tutor_shid_fkey" FOREIGN KEY (shid) REFERENCES schedule(shid)
+
+tydb10=> insert into tutor values(1,'honey','8thgrade','female','9881787888','south street','1982-12-09','honey@gmail.com','12 years','msc','12:20','cbsc','1');
+ERROR:  invalid input syntax for type numeric: "12 years"
+tydb10=> insert into tutor values(1,'honey','8thgrade','female','9881787888','south street','1982-12-09','honey@gmail.com','12 ','msc','12:20','cbsc','1');
+INSERT 0 1
+tydb10=> insert into tutor values(2,'prachi','9thgrade','female','9899999988',' street','1985-10-19','prachi@gmail.com','2 ','phd.sci','3:20','ssc','2');
+INSERT 0 1
+tydb10=> insert into tutor values(3,'prachi','9thgrade','female','9899999988',' street','1985-10-19','prachi@gmail.com','2 ','phd.sci','3:20','cbsc','3');
+INSERT 0 1
+tydb10=> insert into tutor values(4,'shilpa','10thgrade','female','9111111988',' galaxy street','1983-07-12','shilpa@gmail.com','6 ','BSCsci','6:00','ssc','1');
+INSERT 0 1
+tydb10=> insert into tutor values(5,'swati','8thgrade','female','9166767688',' hat street','1989-11-16','swati@gmail.com','1 ','BSCsci','6:00','cbsc','2');
+INSERT 0 1
+tydb10=> insert into tutor values(6,'snehal','10thgrade','female','9161212128',' bingo street','1986-02-10','snehal@gmail.com','3','bba','5:00','ssc','3');
+INSERT 0 1
+tydb10=> select * from tutor;
+ tid | tname  |   class   | gender | contact_no |      addr      |    dob     |      email       | exp |  quali  | available_time | board | shid 
+-----+--------+-----------+--------+------------+----------------+------------+------------------+-----+---------+----------------+-------+------
+   1 | honey  | 8thgrade  | female | 9881787888 | south street   | 1982-12-09 | honey@gmail.com  |  12 | msc     | 12:20:00       | cbsc  |    1
+   2 | prachi | 9thgrade  | female | 9899999988 |  street        | 1985-10-19 | prachi@gmail.com |   2 | phd.sci | 03:20:00       | ssc   |    2
+   3 | prachi | 9thgrade  | female | 9899999988 |  street        | 1985-10-19 | prachi@gmail.com |   2 | phd.sci | 03:20:00       | cbsc  |    3
+   4 | shilpa | 10thgrade | female | 9111111988 |  galaxy street | 1983-07-12 | shilpa@gmail.com |   6 | BSCsci  | 06:00:00       | ssc   |    1
+   5 | swati  | 8thgrade  | female | 9166767688 |  hat street    | 1989-11-16 | swati@gmail.com  |   1 | BSCsci  | 06:00:00       | cbsc  |    2
+   6 | snehal | 10thgrade | female | 9161212128 |  bingo street  | 1986-02-10 | snehal@gmail.com |   3 | bba     | 05:00:00       | ssc   |    3
+(6 rows)
+
+*********************************************************************************************
+
+tydb10=> create table subject(sbid serial primary key,sbname varchar(50),sid varchar(100) references studentt(sid),tid int references tutor(tid));
+NOTICE:  CREATE TABLE will create implicit sequence "subject_sbid_seq" for serial column "subject.sbid"
+NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "subject_pkey" for table "subject"
+WARNING:  foreign key constraint "subject_sid_fkey" will require costly sequential scans
+DETAIL:  Key columns "sid" and "sid" are of different types: character varying and integer.
+CREATE TABLE
+tydb10=> \d subject;
+                                  Table "public.subject"
+ Column |          Type          |                       Modifiers                        
+--------+------------------------+--------------------------------------------------------
+ sbid   | integer                | not null default nextval('subject_sbid_seq'::regclass)
+ sbname | character varying(50)  | 
+ sid    | character varying(100) | 
+ tid    | integer                | 
+Indexes:
+    "subject_pkey" PRIMARY KEY, btree (sbid)
+Foreign-key constraints:
+    "subject_sid_fkey" FOREIGN KEY (sid) REFERENCES studentt(sid)
+    "subject_tid_fkey" FOREIGN KEY (tid) REFERENCES tutor(tid)
+
+tydb10=> insert into subject values(1,'english,hindi','1','2');
+INSERT 0 1
+tydb10=> insert into subject values(2,'english,histroy,math','3','4');
+INSERT 0 1
+tydb10=> insert into subject values(3,'math','5','6');
+INSERT 0 1
+tydb10=> insert into subject values(4,'math,marathi','2','5');
+INSERT 0 1
+tydb10=> insert into subject values(5,'marathi','4','1');
+INSERT 0 1
+tydb10=> select * from subject;
+ sbid |        sbname        | sid | tid 
+------+----------------------+-----+-----
+    1 | english,hindi        | 1   |   2
+    2 | english,histroy,math | 3   |   4
+    3 | math                 | 5   |   6
+    4 | math,marathi         | 2   |   5
+    5 | marathi              | 4   |   1
+(5 rows)
+***************************************
+tydb10=>  create table subject_stud(sbid int references subject(sbid),sid int references studentt(sid),primary key(sbid,sid));
+NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "subject_stud_pkey" for table "subject_stud"
+CREATE TABLE
+tydb10=> \d subject_stud;
+ Table "public.subject_stud"
+ Column |  Type   | Modifiers 
+--------+---------+-----------
+ sbid   | integer | not null
+ sid    | integer | not null
+Indexes:
+    "subject_stud_pkey" PRIMARY KEY, btree (sbid, sid)
+Foreign-key constraints:
+    "subject_stud_sbid_fkey" FOREIGN KEY (sbid) REFERENCES subject(sbid)
+    "subject_stud_sid_fkey" FOREIGN KEY (sid) REFERENCES studentt(sid)
+
+*******************************************
+tydb10=>  create table subject_tutor(sbid int references subject(sbid),tid int references tutor(tid),primary key(sbid,tid));
+NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "subject_tutor_pkey" for table "subject_tutor"
+CREATE TABLE
+tydb10=> \d subject_tutor;
+ Table "public.subject_tutor"
+ Column |  Type   | Modifiers 
+--------+---------+-----------
+ sbid   | integer | not null
+ tid    | integer | not null
+Indexes:
+    "subject_tutor_pkey" PRIMARY KEY, btree (sbid, tid)
+Foreign-key constraints:
+    "subject_tutor_sbid_fkey" FOREIGN KEY (sbid) REFERENCES subject(sbid)
+    "subject_tutor_tid_fkey" FOREIGN KEY (tid) REFERENCES tutor(tid)
+*********************************************8
+
+tydb10=> create table noti(nid serial primary key ,nname varchar(50),by_teacher varchar(50),for_batch varchar(20) check(for_batch='6am' or for_batch='3pm' or for_batch='6pm'),for_class varchar(20) check(for_class='8thgrade' or for_class='9thgrade' or for_class='10thgrade'),board varchar(20)check(board='ssc' or board='cbsc'),content text);
+NOTICE:  CREATE TABLE will create implicit sequence "noti_nid_seq" for serial column "noti.nid"
+NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "noti_pkey" for table "noti"
+CREATE TABLE
+tydb10=> \d noti;
+                                   Table "public.noti"
+   Column   |         Type          |                     Modifiers                      
+------------+-----------------------+----------------------------------------------------
+ nid        | integer               | not null default nextval('noti_nid_seq'::regclass)
+ nname      | character varying(50) | 
+ by_teacher | character varying(50) | 
+ for_batch  | character varying(20) | 
+ for_class  | character varying(20) | 
+ board      | character varying(20) | 
+ content    | text                  | 
+Indexes:
+    "noti_pkey" PRIMARY KEY, btree (nid)
+Check constraints:
+    "noti_board_check" CHECK (board::text = 'ssc'::text OR board::text = 'cbsc'::text)
+    "noti_for_batch_check" CHECK (for_batch::text = '6am'::text OR for_batch::text = '3pm'::text OR for_batch::text = '6pm'::text)
+    "noti_for_class_check" CHECK (for_class::text = '8thgrade'::text OR for_class::text = '9thgrade'::text OR for_class::text = '10thgrade'::text)
+*****************************************************
+
+tydb10=> create table test(tid serial primary key, test_name varchar(50),student_name varchar(80),class varchar(50) check(class='8thgrade' or class='9thgrade' or class='10thgrade'),board varchar(10) check(board='cbsc' or board='ssc'),shid int references schedule(shid),subject varchar(50),chapter varchar(50),marks decimal(4));NOTICE:  CREATE TABLE will create implicit sequence "test_tid_seq" for serial column "test.tid"
+NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "test_pkey" for table "test"
+CREATE TABLE
+tydb10=> \d test;
+                                    Table "public.test"
+    Column    |         Type          |                     Modifiers                      
+--------------+-----------------------+----------------------------------------------------
+ tid          | integer               | not null default nextval('test_tid_seq'::regclass)
+ test_name    | character varying(50) | 
+ student_name | character varying(80) | 
+ class        | character varying(50) | 
+ board        | character varying(10) | 
+ shid         | integer               | 
+ subject      | character varying(50) | 
+ chapter      | character varying(50) | 
+ marks        | numeric(4,0)          | 
+Indexes:
+    "test_pkey" PRIMARY KEY, btree (tid)
+Check constraints:
+    "test_board_check" CHECK (board::text = 'cbsc'::text OR board::text = 'ssc'::text)
+    "test_class_check" CHECK ("class"::text = '8thgrade'::text OR "class"::text = '9thgrade'::text OR "class"::text = '10thgrade'::text)
+Foreign-key constraints:
+    "test_shid_fkey" FOREIGN KEY (shid) REFERENCES schedule(shid)
+
+****************************************8
+tydb10=> create table feedback(fid serial primary key ,fname varchar(50),email varchar(70),comment text);
+NOTICE:  CREATE TABLE will create implicit sequence "feedback_fid_seq" for serial column "feedback.fid"
+NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "feedback_pkey" for table "feedback"
+CREATE TABLE
+tydb10=> \d feedback;
+                                 Table "public.feedback"
+ Column  |         Type          |                       Modifiers                        
+---------+-----------------------+--------------------------------------------------------
+ fid     | integer               | not null default nextval('feedback_fid_seq'::regclass)
+ fname   | character varying(50) | 
+ email   | character varying(70) | 
+ comment | text                  | 
+Indexes:
+    "feedback_pkey" PRIMARY KEY, btree (fid)
+******************************************************
+tydb10=> 
+tydb10=>  create table pay(pid serial primary key,pname varchar(100),cno numeric(16),em varchar(15),ey varchar(5),cvv numeric(3),amt numeric(5));
+NOTICE:  CREATE TABLE will create implicit sequence "pay_pid_seq" for serial column "pay.pid"
+NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "pay_pkey" for table "pay"
+CREATE TABLE
+tydb10=> ^C
+tydb10=> \d pay;
+                                 Table "public.pay"
+ Column |          Type          |                     Modifiers                
+     
+--------+------------------------+----------------------------------------------
+-----
+ pid    | integer                | not null default nextval('pay_pid_seq'::regcl
+ass)
+ pname  | character varying(100) | 
+ cno    | numeric(16,0)          | 
+ em     | character varying(15)  | 
+ ey     | character varying(5)   | 
+ cvv    | numeric(3,0)           | 
+ amt    | numeric(5,0)           | 
+Indexes:
+    "pay_pkey" PRIMARY KEY, btree (pid)
+
+tydb10=> 
+
+
+
+

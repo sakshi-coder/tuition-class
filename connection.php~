@@ -1,0 +1,22 @@
+<?php
+
+$c=pg_connect('192.168.100.252','tydb10','ty10');
+if(!$c)
+{
+	echo"could not connect";
+	pg_error();
+}
+else
+{
+	echo"connection successful";
+}
+
+$d=pg_select_db('tydb10',$c);
+if(!$d)
+{
+	echo"not connect";
+	pg_error();
+}
+else{
+	echo"done";
+}?>

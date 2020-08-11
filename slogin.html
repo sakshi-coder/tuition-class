@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+body {font-family: "Lato", sans-serif;
+
+text-align: justify; /* For Edge */
+  -moz-text-align-last: center; /* For Firefox prior 58.0 */
+  }
+
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+.navbar a {
+  float:right;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  padding: 24px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: right;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 20px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 24px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/*blur bg */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+body{
+.bg-image {
+background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
+  /* The image used */
+  
+  /* Add the blur effect */
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  
+  /* Full height */
+  height: 100%; 
+  
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}}
+
+/* Position text in the middle of the page/image */
+.bg-text {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 40%;
+  padding: 30px;
+  text-align: center;
+ font-size:20px;
+}
+
+
+/*   inner box of login    */
+
+input[type=text], input[type=password] {
+  width: 60%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size:18px;
+}
+
+.container {
+font-size:20px;
+text-align:left;
+  padding: 16px;
+}
+
+.header {
+z-index: 2;  padding: 20px;
+  text-align: center;
+  font-size: 35px;
+}
+
+
+.id1{
+  position: absolute;
+  left:20px;
+  top: 95px;
+  align:center;
+  z-index: 2;
+
+}
+
+.foot{
+font-family:"Comic Sans MS", cursive, sans-serif;
+padding: 40px;
+background-color:black;
+font-size:20px;
+color:white;
+text-align:center;
+}
+
+
+/* Set a style for all buttons */
+button {
+	font-size:20px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+.query{
+font-size:25px;}
+</style>
+<script>
+function validateform(){  
+var e=document.myform.name.value;  
+var p=document.myform.password.value;  
+  
+if (e==null || e==""){  
+  alert("Name can't be blank");  
+  return false;  
+}else if(p.length<8){  
+  alert("Password must be at least 8 characters long.");  
+  return false;  
+  }  
+}  </script>
+</head>
+<body>
+<form name="myform"method="GET" action="http://192.168.100.252/ty10/project/slogin.php">
+<div class="navbar">
+  <li style="float:left"><a>@XL Classes</a></li>
+  <!-----
+ <a href="http://192.168.100.252/ty10/project/contactus.html">Contact us</a>
+  <a href="http://192.168.100.252/ty10/project/faculty.html">Feedback</a>
+  <a href="http://192.168.100.252/ty10/project/aboutus.html">About us</a>
+  <a href="http://192.168.100.252/ty10/project/facilities.html">Facilities</a>
+  <a href="http://192.168.100.252/ty10/project/feedback.html">Faculty</a>
+  <div class="dropdown">
+    <button class="dropbtn">Classes
+    </button>
+    <div class="dropdown-content">
+      <a href="http://192.168.100.252/ty10/project/class.html">8th grade</a>
+      <a href="http://192.168.100.252/ty10/project/class.html">9th grade</a>
+      <a href="http://192.168.100.252/ty10/project/class.html">10th grade</a>
+    </div>
+  </div>   
+  
+  <a href="http://192.168.100.252/ty10/project/main1.html">Home</a>--->
+</div>
+<div class="header">
+  <h1>XL Classes</h1>
+ <img class="id1" src="http://192.168.100.252/ty10/project/logo.png"width="200" height="150">
+<hr color="teal">
+</div>
+
+<div class="bg-image" ><img src="http://192.168.100.252/ty10/project/admin.jpg" width="1400" height="750">
+<div class="bg-text">
+<h2>Login</h2>
+<hr>
+  <div class="container">
+    <label><b>username:</b></label>&nbsp;&nbsp;
+	<input type="text" placeholder="Enter username" name="e"  onsubmit="return validateform()"required>
+<br>
+    <label><b>Password:</b></label>&nbsp;&nbsp;
+    <input type="password" placeholder="Enter Password" name="p" required>
+    <br>    
+	<hr>
+    <label>
+      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+    </label>
+    
+
+<br>
+      <button type="submit" name="submit" class="loginbtn">Login</button>
+	
+</div>
+<a style="color:white;font-size:20px;"href="http://192.168.100.252/ty10/project/reg1.html">Not registered???</a>
+</div>
+
+<footer class="foot">
+<div class="query">
+	contact us:9808576098<br>
+	email:xzb@gmail.com<br>
+	
+<p style="font-size:25px;">	XL Classes gives you the education you want and the attention you need.</p>
+<br> 
+</div><br><br>
+	<div style="float:right;">power by @xxyyzz</div>
+	</footer>
+	</form>
+</body>
+</html>

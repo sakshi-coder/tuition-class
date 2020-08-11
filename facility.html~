@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+
+
+body {font-family: "Lato", sans-serif;
+}
+
+.photo{
+padding:0px 400px;
+}
+
+.header {
+background-color:PaleTurquoise;
+  padding: 50px;
+  text-align: center;
+  font-size: 35px;
+}
+
+
+.id1{
+  position: absolute;
+  left:20px;
+  top: 95px;
+  z-index: 2;
+}
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+.navbar a {
+  float:right;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  padding: 24px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: right;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 20px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 24px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  
+  </style>
+<body>
+
+<div class="navbar">
+  <li style="float:left"><a class="active" href="http://localhost/registration1.html">login</a></li>
+ <a href="http://localhost/contactus.html">Contact Us</a>
+  <a href="http://localhost/faculty.html">Feedback</a>
+  <a href="http://localhost/aboutus.html">About us</a>
+  <a href="http://localhost/facilities.html">Facilities</a>
+  <a href="http://localhost/feedback.html">Faculty</a>
+  <div class="dropdown">
+    <button class="dropbtn">Classes
+    </button>
+    <div class="dropdown-content">
+      <a href="http://localhost/classes.html">8th grade</a>
+      <a href="http://localhost/classes.html">9th grade</a>
+      <a href="http://localhost/classes.html"> 10th grade</a>
+    </div>
+  </div>   
+  
+  <a href="http://localhost/main1.html">Home</a>
+</div>
+
+</body>
+
+<div class="header">
+  <h1>Saiona Classes</h1>
+ <img class="id1" src="http://localhost/logo.png">
+
+</div>
+<hr color="teal">
+
+  
+  KEY FEATURES
+STUDY MATERIAL Arpita's study material consist of brief synopsis of theory, definitions ,formulae, notes in the form of questions answers, numerical, MCQ's,. It's one of the best study material which is appreciated, recommenced and reffered by many teacher from various schools and institutes.
+COACHING SPECIALITIES
+Conceptual and Result oriented teaching
+Dedicated, Well Qualified teachers
+Printed notes and assignments
+Extra Curricular activities [Quiz/Debate/Best Student Awards]
+Visiting Faculty
+Online study materials
+FEEDBACK PROCESS
+Regular feedbacks by calls and SMS
+Parent Teacher meetings
+EVALUATION SYSTEM
+Parents can
+View Childs Classroom exam results online
+Conduct online exams and on spot results
+Chapter wise weekly test and monthly test
+ONLINE FACILITIES
+View attendence details online
+View Childs class schedule online
+View fee schedule online
+Online payment facility
+</body>
+</html>

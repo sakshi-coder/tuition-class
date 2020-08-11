@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<title>home</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: "Lato", sans-serif;
+
+text-align: justify; /* For Edge */
+  -moz-text-align-last: center; /* For Firefox prior 58.0 */
+  
+}
+
+.photo{
+border: 1px solid #777;
+display:block;
+position: center;
+  margin: 15px;
+  border: 1px solid black;
+  padding:30px 30px;
+  float: left;
+  width: 250px;
+  background-color:CornflowerBlue ;
+
+}
+
+.header {
+background-color:PaleTurquoise;
+  padding: 50px;
+  text-align: center;
+  font-size: 35px;
+  font-family:"Comic Sans MS", cursive, sans-serif;
+}
+
+.id1{
+  position: absolute;
+  left:20px;
+  top: 95px;
+  align:center;
+  z-index: 2;
+
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+.navbar {
+top:0px;
+postion:still;
+  overflow: hidden;
+  background-color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+.navbar a {
+  float:right;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  padding: 24px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: right;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 20px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 24px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+div.gallery {
+background-color:Bisque;
+position: center;
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 250px;
+
+}
+
+div.gallery:hover {background-color:Bisque;
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+
+
+.p1{
+padding:px 6px;
+font-size:22px;
+text-align: justify; /* For Edge */
+  -moz-text-align-last: center; /* For Firefox prior 58.0 */
+  text-align-last: center;}
+
+
+  
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  background-color:LightCyan;
+    padding: 10px;
+}
+
+.grid-container > div {
+  background-color:white;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+.item1 {
+
+background-color:powderblue ;
+  font-size:40px;
+  grid-column: 1 / span 3;
+  text-align: center;
+}
+  
+.grid-container1 {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  background-color:LightCyan;
+    padding: 10px;
+}
+
+.grid-container1 > div {
+  background-color:white;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+
+.foot{
+font-family:"Comic Sans MS", cursive, sans-serif;
+padding: 40px;
+background-color:black;
+font-size:20px;
+color:white;
+text-align:center;
+}
+<!--2nd grid for reg and us?--->
+.item2 {
+   grid-column: 2 / span 4;
+  }
+  
+.item3 {  
+padding :0px;
+grid-column: 3/ span 1;
+}
+
+input[type=text], input[type=password] {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size:18px;
+}
+input[type=text], input[type=password] {
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size:18px;
+  float:center;
+}
+.query{
+font-size:25px;}
+  </style>
+<body>
+
+<div class="navbar">
+  <li style="float:left"><a class="active" href="http://localhost/slogin.html">login</a></li>
+ <a href="http://localhost/contactus.html">Contact Us</a>
+  <a href="http://localhost/faculty.html">Feedback</a>
+  <a href="http://localhost/aboutus.html">About us</a>
+  <a href="http://localhost/facilities.html">Facilities</a>
+  <a href="http://localhost/feedback.html">Faculty</a>
+  <div class="dropdown">
+    <button class="dropbtn">Classes
+    </button>
+    <div class="dropdown-content">
+      <a href="http://localhost/classes.html">8th grade</a>
+      <a href="http://localhost/classes.html">9th grade</a>
+      <a href="http://localhost/classes.html"> 10th grade</a>
+    </div>
+  </div>   
+  
+  <a href="http://localhost/main1.html">Home</a>
+</div>
+
+</body>
+
+<div class="header">
+  <h1>XL Classes</h1>
+ <img class="id1" src="http://localhost/logo.png" height="200px" width="200px">
+
+</div>
+<hr color="teal">
+
+<h2 style="text-align: center; font-size:35px;"><u>XL Classes</u></h2>
+
+ 
+	<p class="p1">
+Saiona Class was established in the year 2000 with an objective to guide the student for the board exams of CBSE and SSC. The institute began with a small number of students. However today it has grown as a premier institution which guides the students for their success in the challenging competitive exam as well as boards. This is mainly due to the excellent performance of our students and the dedicated efforts our faculties.
+    </p>
+	<i style="text-align:left; font-size:30px; color:darkred;"><b>Ms.XL Roy </b>Director of Soina Classes</i>
+
+<img class="photo" src="http://localhost/tutor.jfif" height="200" width="350"><br> 
+
+<p class="p1">Dear Students, She being pasXLte about teaching is actively in teaching, holding motivational lectures and monitoring the performance of each and every student. The other faculties consists of a team of highly qualified, experienced and dedicated teachers possessing qualification not less than B.Tech/ Post Graduate/ M.Tech. Besides the team, the institute also invites subject specialists, renowned guest lectures and time management experts from time to time. To Revolutionise Education By Setting New Benchmarks For Quality Teaching With Evolved Learning. To Empower Every Individual With Knowledge So As To Realise His/Her Potential And Achieve His/Her Dream Ambition.
+</p>
+
+<br>
+<br>
+<br>
+	<hr color="DarkCyan">
+	<div class="item1">
+		<b>GALLARY</b>
+	</div>
+	
+	<div class="grid-container" style="background-image:url(101.jfif);">
+		<div class="gallery">
+			<img src="http://localhost/2.jpg" width="600" height="800">
+			
+			</div>
+
+	<div class="gallery">
+		<img src="http://localhost/5.jpg"  width="600" height="800">
+			</div>
+
+	<div class="gallery">
+		<img src="http://localhost/6.jpg"  width="600" height="800">
+		</div>
+
+	<div class="gallery">
+		<img src="http://localhost/7.jpg"  width="600" height="800">
+		</div>
+
+	<div class="gallery">
+		<img src="http://localhost/8.jpg"  width="600" height="800">
+		</div>
+	<div class="gallery">
+			<img src="http://localhost/9.jpg"  width="600" height="800">
+		</div>
+
+	<div class="gallery">
+		<img src="http://localhost/10.jfif" width="600" height="800">
+		</div>
+
+	<div class="gallery">
+		<img src="http://localhost/11.jfif"  width="600" height="800">
+		</div>
+</div>
+
+<hr>
+<br>
+<div class="grid-container1" style="background-color:AliceBlue ; grid-gap:50px;" >
+
+  <div class="item2" style="background-color:PaleTurquoise ; padding:50px;">
+<h5 style="color:brown; font-size:30px;  font-family:Comic Sans MS, cursive, sans-serif;">
+<b><i><u>REGISTER HERE...!!</b></i></u>
+</h5>
+
+  <img src="http://localhost/icon4.jpg" height="300px"><br>
+    <br>  
+	<button type="submit" align=center style="font-size:28px; background-color:PapayaWhip;"> 
+	<a style="color:black"href="http://localhost/s_registration.html"> Registration for students
+  </a>
+  </button>
+  <br>
+  <hr color="navy">
+<br>
+<img src="http://localhost/icon5.png" height="300px"  >
+<br> 
+<br>
+<button type="submit" align=center style="font-size:28px; background-color:PapayaWhip;">
+<a  style="color:black"href="http://localhost/t_registration.html">Registration for tutors</a></button>
+
+  </div>
+
+<div class="item3"style="background-color:PaleTurquoise   ;">
+<i>
+<h5 style="color:red; font-size:30px;font-family:Comic Sans MS, cursive, sans-serif;">WHY US?</h5></i>
+<hr color="navy">
+
+Saiona Classes is committed to the quality education and all the staff working here is dedicated for the same. We believe that the aim of education is to ignite the thinking of the students. The overall development of the student depends upon number of factors like study material, Assessment, Feedback, etc.
+Saiona Classes is is the only institute with students as a center philosophy with our every activity and planning.
+Saiona Classes glorious 10 years of success
+More than 10000 students till now
+More than 10000 students till now
+Most Distinguished & Dedicated faculty members.
+Revolutionary scientific methodology for teaching.
+
+
+<hr color="navy">
+<h5 style="color:coral; font-size:30px;font-family:Comic Sans MS, cursive, sans-serif;">Find Us:</h5>
+
+<img src="http://localhost/location.jpg" height="400" width="800">
+</div>
+  
+</div>
+<br>
+
+   <footer class="foot">
+<div class="query">
+	
+<u style="color:red;"><b><i style="color:yellow;">ANY QUERY??</u></i></b>
+<br>
+Name:<input type=text name=qnm>
+<br>Email:<input type=text name=qe>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Class:<select style="font-size:25px;" required>
+    <option value="0">---</option>
+    <option value="1">8th grade</option>
+    <option value="2">9th grade</option>
+    <option value="3">10th grade</option>
+  </select>
+<br>Contact no.<input type=text name=qn><br>
+Comment here:<br><textarea rows="6" cols="60"></textarea>
+<br><input style="font-size:25px;" type=submit name=submit value=submit >
+<br><br><br><hr color="teal">
+<br>
+contact us:9876543210<br>
+	email:xzb@gmail.com<br>
+	
+<p style="font-size:25px;">	XL Classes gives you the education you want and the attention you need.</p>
+</div><br><br>
+	<div style="float:right;">power by @xxyyzz</div>
+	</footer>	
+
+
+</body>
+</html>
+

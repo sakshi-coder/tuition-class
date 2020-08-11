@@ -1,0 +1,160 @@
+mysql> create user 'ty10'@'localhost' identified by 'ty10';
+ERROR 1396 (HY000): Operation CREATE USER failed for 'ty10'@'localhost'
+mysql> create user 't10'@'localhost' identified by 't10';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> grant all privileges on tydb10.* to 't10'@'localhost' identified by 't10';
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> use tydb10;
+Database changed
+
+mysql> create table registration(rname varchar(50) primary key,rcontactno decimal(10),reg_as varchar(50) check(reg_as='Student' or reg_as='tutor'),confirm_password varchar(50));
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> desc registration;
++------------------+---------------+------+-----+---------+-------+
+| Field            | Type          | Null | Key | Default | Extra |
++------------------+---------------+------+-----+---------+-------+
+| rname            | varchar(50)   | NO   | PRI | NULL    |       |
+| rcontactno       | decimal(10,0) | YES  |     | NULL    |       |
+| reg_as           | varchar(50)   | YES  |     | NULL    |       |
+| confirm_password | varchar(50)   | YES  |     | NULL    |       |
++------------------+---------------+------+-----+---------+-------+
+4 rows in set (0.05 sec)
+
+
+mysql> create table login(email varchar(30) not null,password varchar(30)not null);
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> create table schedule(shid int primary key auto_increment ,shname varchar(50) check(shname=6am or shname=3pm or shname=6pm));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc schedule;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| shid   | int(11)     | NO   | PRI | NULL    |       |
+| shname | varchar(50) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+2 rows in set (0.05 sec)
+
+
+mysql>  create table student(sid int primary key auto_increment, sname varchar(100),class varchar(50) check(class=8thgrade or class=9thgrade or class=10thgrade), contactno decimal(10),addr text(200),gender varchar(30) check(gender=female or gender=male or gender=other),dob date,email varchar(30) references login(email),scname varchar(50),board varchar(10) check(board=CBSC or board=SSC),wut time,shname varchar(50) references schedule(shid));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc student;
++-----------+---------------+------+-----+---------+----------------+
+| Field     | Type          | Null | Key | Default | Extra          |
++-----------+---------------+------+-----+---------+----------------+
+| sid       | int(11)       | NO   | PRI | NULL    | auto_increment |
+| sname     | varchar(100)  | YES  |     | NULL    |                |
+| class     | varchar(50)   | YES  |     | NULL    |                |
+| contactno | decimal(10,0) | YES  |     | NULL    |                |
+| addr      | tinytext      | YES  |     | NULL    |                |
+| gender    | varchar(30)   | YES  |     | NULL    |                |
+| dob       | date          | YES  |     | NULL    |                |
+| email     | varchar(30)   | YES  |     | NULL    |                |
+| scname    | varchar(50)   | YES  |     | NULL    |                |
+| board     | varchar(10)   | YES  |     | NULL    |                |
+| wut       | time          | YES  |     | NULL    |                |
+| shname    | varchar(50)   | YES  |     | NULL    |                |
++-----------+---------------+------+-----+---------+----------------+
+12 rows in set (0.05 sec)
+
+mysql> create table tutor(tid int primary key auto_increment,tname varchar(100),class varchar(40) check(class=9thgrade or class=8thgrade or class=10thgrade),gender varchar(50) check(gender=female or gender=male or gender=other),contact_no decimal(10),addr text(200),dob date,email varchar(50)references login(email),exp decimal(3),quali varchar(150),available_time time,board varchar(30) check(board=CBSC or board=SSC),shname varchar(50) references schedule(shname));
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> desc tutor;
++----------------+---------------+------+-----+---------+----------------+
+| Field          | Type          | Null | Key | Default | Extra          |
++----------------+---------------+------+-----+---------+----------------+
+| tid            | int(11)       | NO   | PRI | NULL    | auto_increment |
+| tname          | varchar(100)  | YES  |     | NULL    |                |
+| class          | varchar(40)   | YES  |     | NULL    |                |
+| gender         | varchar(50)   | YES  |     | NULL    |                |
+| contact_no     | decimal(10,0) | YES  |     | NULL    |                |
+| addr           | tinytext      | YES  |     | NULL    |                |
+| dob            | date          | YES  |     | NULL    |                |
+| email          | varchar(50)   | YES  |     | NULL    |                |
+| exp            | decimal(3,0)  | YES  |     | NULL    |                |
+| quali          | varchar(150)  | YES  |     | NULL    |                |
+| available_time | time          | YES  |     | NULL    |                |
+| board          | varchar(30)   | YES  |     | NULL    |                |
+| shname         | varchar(50)   | YES  |     | NULL    |                |
++----------------+---------------+------+-----+---------+----------------+
+13 rows in set (0.10 sec)
+
+mysql> create table subject(sbid int primary key auto_increment,sbname varchar(50),sname varchar(100) references student(sname),tname varchar(100) references tutor(tname));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc subject;
++--------+--------------+------+-----+---------+----------------+
+| Field  | Type         | Null | Key | Default | Extra          |
++--------+--------------+------+-----+---------+----------------+
+| sbid   | int(11)      | NO   | PRI | NULL    | auto_increment |
+| sbname | varchar(50)  | YES  |     | NULL    |                |
+| sname  | varchar(100) | YES  |     | NULL    |                |
+| tname  | varchar(100) | YES  |     | NULL    |                |
++--------+--------------+------+-----+---------+----------------+
+4 rows in set (0.09 sec)
+
+mysql> create table subject_stud(sbid int references subject(sbid),sid int references student(sid),primary key(sbid,sid));
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> create table subject_tutor(sbid int references subject(sbid),tid int references tutor(tid),primary key(sbid,tid));
+Query OK, 0 rows affected (0.06 sec)
+
+MYSQL>create table pay(pid int primary key,pname varchar(100),cno decimal(16),em varchar(15),ey year,cvv decimal(3),amt decimal(5));
+
+mysql> create table noti(nid int primary key auto_increment,nname varchar(50),by_teacher varchar(50),for_batch varchar(20) check(for_batch=6am or for_batch=3pm or for_batch=6pm),for_class varchar(20) check(for_class=8th or for_class=9th or for_class=10th),board varchar(20)check(board=ssc or board=cbsc),content text);
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> desc noti;
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| nid        | int(11)     | NO   | PRI | NULL    | auto_increment |
+| nname      | varchar(50) | YES  |     | NULL    |                |
+| by_teacher | varchar(50) | YES  |     | NULL    |                |
+| for_batch  | varchar(20) | YES  |     | NULL    |                |
+| for_class  | varchar(20) | YES  |     | NULL    |                |
+| board      | varchar(20) | YES  |     | NULL    |                |
+| content    | text        | YES  |     | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+7 rows in set (0.11 sec)
+
+
+mysql> create table test(tid int primary key auto_increment, test_name varchar(50),student_name varchar(80),class varchar(50) check(class=8thgrade or class=9thgrade or class=10thgrade),board varchar(10) check(board=CBSC or board=SSC),batch varchar(20) check(batch=6am or batch=3pm or batch=6pm),subject varchar(50),chapter varchar(50),marks decimal(4));
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> desc test;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| tid          | int(11)      | NO   | PRI | NULL    | auto_increment |
+| test_name    | varchar(50)  | YES  |     | NULL    |                |
+| student_name | varchar(80)  | YES  |     | NULL    |                |
+| class        | varchar(50)  | YES  |     | NULL    |                |
+| board        | varchar(10)  | YES  |     | NULL    |                |
+| batch        | varchar(20)  | YES  |     | NULL    |                |
+| subject      | varchar(50)  | YES  |     | NULL    |                |
+| chapter      | varchar(50)  | YES  |     | NULL    |                |
+| marks        | decimal(4,0) | YES  |     | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+9 rows in set (0.23 sec)
+
+
+mysql> create table feedback(fid int primary key auto_increment,fname varchar(50),email varchar(70),comment text);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc feedback;
++---------+-------------+------+-----+---------+----------------+
+| Field   | Type        | Null | Key | Default | Extra          |
++---------+-------------+------+-----+---------+----------------+
+| fid     | int(11)     | NO   | PRI | NULL    | auto_increment |
+| fname   | varchar(50) | YES  |     | NULL    |                |
+| email   | varchar(70) | YES  |     | NULL    |                |
+| comment | text        | YES  |     | NULL    |                |
++---------+-------------+------+-----+---------+----------------+
+4 rows in set (0.05 sec)

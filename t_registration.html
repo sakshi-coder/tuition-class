@@ -1,0 +1,371 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: "Lato", sans-serif;
+text-align: justify; /* For Edge */
+  -moz-text-align-last: center; /* For Firefox prior 58.0 */
+  }
+
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+.navbar a {
+  float:right;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  padding: 24px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: right;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 20px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 24px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/*blur bg */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+body{
+.bg-image {
+background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
+  /* The image used */
+  
+  /* Add the blur effect */
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  
+  /* Full height */
+  height: 100%; 
+  
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}}
+
+/* Position text in the middle of the page/image */
+.bg-text {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 205%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 60%;
+  padding: 30px;
+  text-align: left;
+ font-size:20px;
+}
+
+
+/*   inner box of login    */
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+ 
+  .cancelbtn {
+     width: 50%;
+  }
+}
+input[type=text], input[type=password], input[type=email], input[type=tel], input[type=date],input[type=time] {
+  width: 60%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size:18px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.cancelbtn {
+font-size:20px;
+  padding: 15px 18px;
+  background-color: #f44336;
+}
+.container {
+font-size:20px;
+  padding: 16px;
+}
+
+.header {
+z-index: 2;  padding: 20px;
+  text-align: center;
+  font-size: 35px;
+}
+
+
+.id1{
+  position: absolute;
+  left:20px;
+  top: 95px;
+  align:center;
+  z-index: 2;
+
+}
+
+.foot{
+font-family:"Comic Sans MS", cursive, sans-serif;
+padding: 40px;
+background-color:black;
+font-size:20px;
+color:white;
+text-align:center;
+}
+.query{
+font-size:25px;}
+
+input[type="checkbox"]{
+  width: 22px; /*Desired width*/
+  height: 22px; /*Desired height*/
+}
+input[type="radio"]{
+  width: 22px; /*Desired width*/
+  height: 22px; /*Desired height*/
+}
+</style>
+<script>
+function validateEmail(sEmail) {
+  var reEmail = /^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!\.)){0,61}[a-zA-Z0-9]?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!$)){0,61}[a-zA-Z0-9]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/;
+
+  if(!sEmail.match(reEmail)) {
+    alert("Invalid email address");
+    return false;
+  }
+
+  return true;
+
+}
+</script>
+</head>
+<body>
+<form method="get" action="http://192.168.100.252/ty10/project/t_registration.php">
+
+<div class="navbar">
+  <li style="float:left"><a>@Excel Classes</a></li>
+ <a href="http://192.168.100.252/ty10/project/contactus.html">Contact us</a>
+  <a href="http://192.168.100.252/ty10/project/faculty.html">Feedback</a>
+  <a href="http://192.168.100.252/ty10/project/aboutus.html">About us</a>
+  <a href="http://192.168.100.252/ty10/project/facilities.html">Facilities</a>
+  <a href="http://192.168.100.252/ty10/project/feedback.html">Faculty</a>
+  <div class="dropdown">
+    <button class="dropbtn">Classes
+    </button>
+    <div class="dropdown-content">
+      <a href="http://192.168.100.252/ty10/project/class.html">8th grade</a>
+      <a href="http://192.168.100.252/ty10/project/class.html">9th grade</a>
+      <a href="http://192.168.100.252/ty10/project/class.html">10th grade</a>
+    </div>
+  </div>   
+  
+  <a href="home">Home</a>
+</div>
+
+<div class="header">
+  <h1>Excel Classes</h1>
+ <img class="id1" src="http://192.168.100.252/ty10/project/logo.png"width="200" height="150">
+<hr color="teal">
+</div>
+
+<div class="bg-image" ><img src="http://192.168.100.252/ty10/project/3.jpg" width="1400" height="1950">
+  </div>
+
+<div class="bg-text">
+<h1>Register</h1>
+    <p>Please fill in this form to create an account.</p>
+<hr>
+<div class="container">
+    <fieldset>
+	<legend>Personal Information:</legend>
+    <label><b>Name: </b></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" placeholder="Full Name" name="t1" required>
+<br><br>
+<label><b>Gender: </b></label></th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   <input type="radio" name="g" value="female">Female&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   <input type="radio" name="g" value="male">Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   <input type="radio" name="g" value="other">Other&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   <br><br>
+   
+	
+	<label><b>Contact No: </b></label>&nbsp;&nbsp;
+    <input type="tel" placeholder="1234567890" pattern="[0-9]{10}" name="t2" required>
+<br>
+<br>
+    <label><b> Address: </b></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" placeholder="Enter Address" name="t3" required>
+<BR><br>
+    <label ><b>Date Of Birth:  </b></label>
+    <input type="date" placeholder="YYYY-MM-DD" name="t4" required>
+<BR><br>
+    <label><b>Email:  </b></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="email" placeholder="xyz@gmail.com" name="t5"  onblur="validateEmail(this.value);"required>
+	<br><BR>
+
+	    <label><b>Experience: </b></label>
+    <input type="text" placeholder="Experience" name="t6" required>
+	<BR><br>
+	    <label><b>Qualification: </b></label>
+    <input type="text" placeholder="MSC,Ph.d,etc." name="t7" required>
+	<BR><br>
+	<fieldset>
+<label><b>Class: </b></label>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <input type="radio" name="c" value="8thgrade">8th grade&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <input type="radio" name="c" value="9thgrade">9th grade&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <input type="radio" name="c" value="10thgrade">10th grade  
+  <br>
+	<br>
+<label><b>Name of Board:  </b></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <input type=radio value=cbsc name=t9>CBSE
+	<input type=radio value=ssc name=t9>SSC 
+	<br><br>
+	
+    <label><b>Available time </b></label>
+    <input type="time" placeholder="time: HH:MM" name="t8" required>
+	<BR><br>
+	
+	<label><b>Subjects: </b></label>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <input type="checkbox" name="s[]" value="eng">English&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <input type="checkbox" name="s[]" value="hind">hindi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   <input type="checkbox" name="s[]" value="mara">Marathi<br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   <input type="checkbox" name="s[]" value="eng">History&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <input type="checkbox"  name="s[]" value="9">Geography&nbsp;&nbsp;&nbsp;&nbsp;
+   <input type="checkbox"  name="s[]" value="10">Science<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   <input type="checkbox" name="s[]" value="eng">Maths&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      
+	</fieldset>
+	</fieldset>
+ <hr><hr>
+ <br><!----
+ <b>Username: </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" placeholder="Enter Username" name="t10" required>
+   <br> <b>Password: </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="password" placeholder="Enter Password" name="pwd" required>
+<br>
+    <b>Confirm Password: </b>
+    <input type="password" placeholder="Repeat Password" name="t11" required>-->
+    <hr>
+</div>   
+   <p>By creating an account you agree to our <a href="http://192.168.100.252/ty10/project/t_tandc.html"style="color:coral;">Terms & Privacy</a>.</p>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="r" value="submit" align=center style="font-size:20px;">
+	submit</a></button>&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="reset" class="cancelbtn">Reset</button>
+
+  <div class="container">
+    <p>Already have an account? <a href="http://192.168.100.252/ty10/project/slogin.html"style="color:coral;">Sign in</a>.</p>
+</div>  
+</div>
+</div>
+ 
+ <footer class="foot">
+<div class="query">
+	contact us:9876543210<br>
+	email:xzb@gmail.com<br>
+	
+<p style="font-size:25px;">	Excel Classes gives you the education you want and the attention you need.</p>
+<br> 
+</div><br><br>
+	<div style="float:right;">power by @xxyyzz</div>
+	</footer>	
+</form>
+</body>
+</html>

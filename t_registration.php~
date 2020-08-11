@@ -1,0 +1,45 @@
+<?php
+include "connection.php";
+$name=$_GET['t1'];
+$gen=$_GET['g'];
+$class=$_GET['c'];
+$cont_no=$_GET['t2'];
+$addr=$_GET['t3'];
+$dob=$_GET['t4'];
+$email=$_GET['t5'];
+$exp=$_GET['t6'];
+$quali=$_GET['t7'];
+$at=$_GET['t8'];
+$=$_GET['t9'];
+//$s=$_GET['s'];
+	$s=implode(',', $_GET['s']);
+     //       $s = "insert into new(time) values('$t1')"; 
+	 setcookie("t1",$name);
+echo "NAME".$_COOKIE["t1"];
+
+	
+$tx= pg_query("INSERT INTO tutor(tname,gender,contact_no,addr,dob,email,exp,quali,class,
+board,available_time)VALUES('$name','$gen','$cont_no','$addr','$dob','$email',
+'$exp','$quali','$class','$b','$at');");
+if(!$tx)
+{
+	echo"failed";
+}
+else
+{
+	echo"saved";
+}
+
+$z=pg_query("insert into subject (sbname) values('$s');");
+if(!$z)
+{
+	echo"failed";
+}
+else
+{
+	echo"saved";
+	header("location:http://192.168.100.252/ty10/project/t_schedule.html");
+	exit();
+}
+
+?>
